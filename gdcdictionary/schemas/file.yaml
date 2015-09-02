@@ -13,6 +13,11 @@ description: >
 additionalProperties: false
 validators: null
 
+ownershipTraversals:
+  - ['cases', 'samples', 'portions', 'analytes', 'aliquots', 'files']
+  - ['cases', 'samples', 'aliquots', 'files']
+  - ['cases', 'files']
+
 systemProperties:
   - id
   - project_id
@@ -189,5 +194,3 @@ properties:
     $ref: "definitions.yaml#/to_one"
   described_cases:
     $ref: "definitions.yaml#/to_one"
-  project_id:
-    type: string
