@@ -13,6 +13,9 @@ description: >
 additionalProperties: false
 validators: null
 
+ownershipTraversals:
+  - ['cases', 'samples', 'portions', 'slides']
+
 systemProperties:
   - id
   - project_id
@@ -92,5 +95,3 @@ properties:
     description: "TODO: define, from BCR"
   portions:
     $ref: "definitions.yaml#/to_many"
-  project_id:
-    type: string

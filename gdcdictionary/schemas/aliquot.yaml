@@ -13,9 +13,12 @@ description: >
 additionalProperties: false
 validators: []
 
+ownershipTraversals:
+  - ['cases', 'samples', 'portions', 'analytes', 'aliquots']
+  - ['cases', 'samples', 'aliquots']
+
 systemProperties:
   - id
-  - project_id
 
 required:
   - alias
@@ -82,5 +85,3 @@ properties:
     $ref: "definitions.yaml#/to_one"
   centers:
     $ref: "definitions.yaml#/to_one"
-  project_id:
-    type: string

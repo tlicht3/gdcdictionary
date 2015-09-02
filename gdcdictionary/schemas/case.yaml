@@ -11,6 +11,9 @@ description: "TODO"
 additionalProperties: false
 validators: null
 
+ownershipTraversals:
+  - ['cases']
+
 systemProperties:
   - id
   - project_id
@@ -59,5 +62,3 @@ properties:
     $ref: "definitions.yaml#/to_one"
   tissue_source_sites:
     $ref: "definitions.yaml#/to_one"
-  project_id:
-    type: string

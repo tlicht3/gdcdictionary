@@ -12,6 +12,9 @@ description: >
 additionalProperties: false
 validators: null
 
+ownershipTraversals:
+  - ['cases', 'samples', 'portions']
+
 systemProperties:
   - id
   - project_id
@@ -73,5 +76,3 @@ properties:
     description: >
       Indicates that the portion is physically derived from the linked to
       sample via some process/protocol
-  project_id:
-    type: string

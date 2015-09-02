@@ -158,5 +158,3 @@ properties:
     $ref: "definitions.yaml#/to_one"
   files:
     $ref: "definitions.yaml#/to_one"
-  project_id:
-    type: string
