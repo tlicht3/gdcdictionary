@@ -5,6 +5,9 @@ description: Diagnostic slide image
 additionalProperties: false
 category: data_bundle
 validators: null
+submission_acl:
+    gdc: [ read, write ]
+    submitter: [ read, write ]
 
 systemProperties:
     id:
@@ -43,6 +46,9 @@ properties:
             additionalProperties: false
             category: data_file
             validators: null
+            submission_acl:
+                gdc: [ read, write ]
+                submitter: [ read, write ]
 
             systemProperties:
                 id:

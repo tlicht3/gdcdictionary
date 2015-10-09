@@ -5,6 +5,9 @@ description: Pathology report
 additionalProperties: false
 category: data_bundle
 validators: null
+submission_acl:
+    gdc: [ read, write ]
+    submitter: [ read, write ]
 
 systemProperties:
     id:

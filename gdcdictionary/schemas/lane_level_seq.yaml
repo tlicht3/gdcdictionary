@@ -4,7 +4,10 @@ type: object
 description: Sequencing reads from one lane of an NGS run
 additionalProperties: false
 category: data_bundle
-validators: null
+validators: lane_level_seq_qc  # hook up with python function to perform QC
+submission_acl:
+    gdc: [ read, write ]
+    submitter: [ read, write ]
 
 systemProperties:
     id:
@@ -67,8 +70,10 @@ properties:
         type: boolean
     read_length:
         type: integer
-    read_group_id:  # it may be good to assign UUID to read group
+    read_group_id:  # this is the submitter read_group_id
         type: string
+    gdc_read_group_id:  # GDC will assign UUID to read group
+        type: "_definitions#/UUID"
     bqsr_performed:
         type: boolean
 
@@ -83,6 +88,9 @@ properties:
         additionalProperties: false
         category: data_file
         validators: null
+        submission_acl:
+            gdc: [ read, write ]
+            submitter: [ read, write ]
 
         systemProperties:
             id:
@@ -99,7 +107,7 @@ properties:
               multiplicity: one_to_one
               required: true
 
-        required: [ file_name, file_format, file_size, md5sum ]
+        required: [ type, file_name, file_format, file_size, md5sum ]
 
         uniqueKeys:
             - [ id ]
@@ -130,8 +138,11 @@ properties:
         type: object
         description: GDC QC metrics
         additionalProperties: false
-        category: qc_bundle  # qc_bundle is produced by GDC, and uploaded to GDC by GDC
+        category: data_bundle  # qc data_bundle is produced by GDC, and uploaded to GDC by GDC
         validators: null
+        submission_acl:
+            gdc: [ read, write ]
+            submitter: [ read ]
 
         systemProperties:
             id:
@@ -174,8 +185,11 @@ properties:
                 type: object
                 description: FASTQC generated QC report files for lane level sequencing data
                 additionalProperties: false
-                category: qc_file
+                category: data_file
                 validators: null
+                submission_acl:
+                    gdc: [ read, write ]
+                    submitter: [ read ]
 
                 systemProperties:
                     id:
