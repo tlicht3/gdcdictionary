@@ -2,10 +2,11 @@ from jinja2 import Environment
 import os
 import os.path
 import yaml
-#from pdb import set_trace
+from pdb import set_trace
 
 default_gdir="/Users/jensenma/Code/GDC/gdcdictionary/gdcdictionary/glossary"
 default_sdir="/Users/jensenma/Code/GDC/gdcdictionary/gdcdictionary/schemas"
+
 class Glossary:
     def __init__(self,gdir=default_gdir):
         self.gdir = gdir
@@ -33,21 +34,28 @@ class Glossary:
         except KeyError:
             return
 
-env = Environment(trim_blocks=True,
-                  lstrip_blocks=True)
-gloss = Glossary()
-objname = "demographic"
-tmplf = "dict_template.md"
-obj = yaml.load( open( os.path.join(default_sdir, objname+".yaml") ).read() )
+class MakeDictMD:
+    def __init__(self,gloss=Glossary(),template="dict_template.md"):
+        self.jinja_env = Environment(trim_blocks=True,
+                                     lstrip_blocks=True,
+                                     extensions=['jinja2.ext.loopcontrols'])
+        self.gloss = gloss
+        self.template = self.jinja_env.from_string( open( template ).read() )
 
-properties = obj['properties'].keys()
+    def render_entry(self,yobj):
+        return self.template.render(obj=yobj,gloss=self.gloss)
 
-# get terms
 
-try:
-    term = yaml.load( open( "../../glossary/"+objname+".yaml").read() )
-except:
-    term ={}
-
-template = env.from_string( open( tmplf ).read() )
-print template.render(obj=obj,gloss=gloss)
+if __name__=='__main__':
+    mdmd = MakeDictMD()
+    dict_files = [ fn for fn in os.listdir(default_sdir) if fn.endswith("yaml") ]
+    for fn in dict_files:
+        if fn.find("metaschema") >= 0 or fn.find("_definitions") >= 0:
+            continue
+        obj = yaml.load( open( os.path.join(default_sdir, fn) ).read() );
+        try:
+            f=open(obj['id']+".md","w");
+            print >> f, mdmd.render_entry(obj)
+        except:
+            print "problem with {name}".format(name=obj.id)
+        
