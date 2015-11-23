@@ -1,0 +1,10 @@
+---
+site_url :
+  https://gdc-dev.nci.nih.gov
+site_cert_fp :
+  - sha1$55:2B:98:96:58:82:8A:33:E7:19:68:AB:C0:D4:B7:B9:F1:2C:7B:E2
+  - sha256$CB:96:4B:0A:02:F0:C4:7A:1E:30:5B:CC:16:14:CA:82:77:89:EE:17:AD:FF:57:6D:0F:20:F0:8E:F2:F8:98:D2
+dict_url :
+  gdc-dictionary
+
+  

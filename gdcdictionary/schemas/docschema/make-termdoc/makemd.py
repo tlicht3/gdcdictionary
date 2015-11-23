@@ -42,8 +42,8 @@ class MakeDictMD:
         self.gloss = gloss
         self.template = self.jinja_env.from_string( open( template ).read() )
 
-    def render_entry(self,yobj):
-        return self.template.render(obj=yobj,gloss=self.gloss)
+    def render_entry(self,yobj,has_terms=True):
+        return self.template.render(obj=yobj,gloss=self.gloss,has_terms=has_terms)
 
 
 if __name__=='__main__':
@@ -55,7 +55,9 @@ if __name__=='__main__':
         obj = yaml.load( open( os.path.join(default_sdir, fn) ).read() );
         try:
             f=open(obj['id']+".md","w");
-            print >> f, mdmd.render_entry(obj)
-        except:
-            print "problem with {name}".format(name=obj.id)
+            term = [ prop for prop in obj['properties'] if mdmd.gloss.get_term(prop) ]
+            print >> f, mdmd.render_entry(obj,has_terms=term)
+        except Exception as e:
+            print "problem with {name}".format(name=obj['id'])
+            print e
         
