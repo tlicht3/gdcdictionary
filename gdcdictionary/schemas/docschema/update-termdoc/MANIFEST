@@ -1,0 +1,8 @@
+Build.PL
+conf/config.yaml
+lib/GDC/Docs/UpdateTerms.pm
+MYMETA.json
+MYMETA.yml
+README
+t/001_test.t
+t/002_test.t

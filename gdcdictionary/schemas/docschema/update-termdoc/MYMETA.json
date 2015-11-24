@@ -1,0 +1,44 @@
+{
+   "abstract" : "Screenscraping hack to update GDC dictionary",
+   "author" : [
+      "unknown"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "Module::Build version 0.421",
+   "license" : [
+      "unknown"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "GDC-Docs-UpdateTerms",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::Exception" : "0",
+            "Test::More" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Config::Any" : "0",
+            "Try::Tiny" : "0",
+            "WWW::Mechanize::Firefox" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "GDC::Docs::UpdateTerms" : {
+         "file" : "lib/GDC/Docs/UpdateTerms.pm",
+         "version" : "0.1"
+      }
+   },
+   "release_status" : "stable",
+   "version" : "0.1"
+}

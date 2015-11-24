@@ -1,0 +1,25 @@
+---
+abstract: 'Screenscraping hack to update GDC dictionary'
+author:
+  - unknown
+build_requires:
+  Test::Exception: '0'
+  Test::More: '0'
+configure_requires:
+  Module::Build: '0'
+dynamic_config: 0
+generated_by: 'Module::Build version 0.421, CPAN::Meta::Converter version 2.143240'
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: GDC-Docs-UpdateTerms
+provides:
+  GDC::Docs::UpdateTerms:
+    file: lib/GDC/Docs/UpdateTerms.pm
+    version: '0.1'
+requires:
+  Config::Any: '0'
+  Try::Tiny: '0'
+  WWW::Mechanize::Firefox: '0'
+version: '0.1'
