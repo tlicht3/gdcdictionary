@@ -9,6 +9,14 @@
 {% macro anchor_on(nm) -%}
 <a name="{{nm}}"></a>
 {%- endmacro %}
+{% macro titleize(nm) -%}
+ {% set S = nm.split("_") %}
+ {% set t = S[0]|capitalize %}
+ {% for s in S %}
+ {% set t = t + ' ' + s|capitalize %}
+ {% endfor %}
+{{t}}
+{%- endmacro %}
 ## _Entry_: {{ obj.title }} ##
 ---
 {% if gloss.get_definition(obj.id) %}
@@ -40,6 +48,21 @@ _CDE_: {{cdeinfo.cde_id}}
    {% elif propv.enum is defined %}
 | {{ link_to(prop) if gloss.get_term(prop) else prop }} | "{{ propv.enum|join('", "') }}" | {{ 'YES' if prop in obj.required else 'no' }} |
    {% endif %}
+{% endfor %}
+{% endif %}
+
+{% if obj.links|length %}
+### Links ###
+| Link to Entry | Relationship | Required |
+| --- | --- | --- |
+{% for l in obj.links %}
+{% if 'subgroup' in l %}
+ {% for link in l.subgroup %}
+ | [{{titleize(link.target_type)}}](/gdc-dictionary/{{titleize(link.target_type)}}) | {{ 'A' if obj.title[0] not in 'AEIOUaeious' else 'An' }} {{obj.title}} record {{link.label}} {{ 'a' if link.target_type[0] not in 'AEIOUaeiou' else 'an' }} {{link.target_type}} | {{ 'YES' if link.required else 'no' }} |
+ {% endfor %}
+ {% else %}
+  | [{{titleize(l.target_type)}}](/gdc-dictionary/{{titleize(l.target_type)}}) | {{ 'A' if obj.title[0] not in 'AEIOUaeiou' else 'An' }} {{obj.title}} record {{l.label}} {{ 'a' if l.target_type[0] not in 'AEIOUaeiou' else 'an' }} {{l.target_type}} | {{ 'YES' if l.required else 'no' }} |
+ {% endif %}
 {% endfor %}
 {% endif %}
 
