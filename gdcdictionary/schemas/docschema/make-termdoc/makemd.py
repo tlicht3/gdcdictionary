@@ -2,6 +2,7 @@ from jinja2 import Environment
 import os
 import os.path
 import yaml
+from sys import argv, stdout
 from pdb import set_trace
 
 default_gdir="/Users/jensenma/Code/GDC/gdcdictionary/gdcdictionary/glossary"
@@ -48,13 +49,13 @@ class MakeDictMD:
 
 if __name__=='__main__':
     mdmd = MakeDictMD()
-    dict_files = [ fn for fn in os.listdir(default_sdir) if fn.endswith("yaml") ]
+    dict_files = argv[1:] if len(argv[1:]) else [ fn for fn in os.listdir(default_sdir) if fn.endswith("yaml") ]
     for fn in dict_files:
         if fn.find("metaschema") >= 0 or fn.find("_definitions") >= 0:
             continue
         obj = yaml.load( open( os.path.join(default_sdir, fn) ).read() );
         try:
-            f=open(obj['id']+".md","w");
+            f= stdout if len(argv[1:]) else open(obj['id']+".md","w");
             term = [ prop for prop in obj['properties'] if mdmd.gloss.get_term(prop) ]
             print >> f, mdmd.render_entry(obj,has_terms=term)
         except Exception as e:

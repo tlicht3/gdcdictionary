@@ -5,17 +5,23 @@ use Try::Tiny;
 
 use strict;
 #use warnings;
-
+our $VERSION='0.1';
 $DB::deep=1000;
 
 sub new {
   my $class = shift;
   my %args = @_;
   my $self = bless {}, $class;
-  my $cfg = Config::Any->load_files( { files => [ $args{config_file} || 'config.yaml' ], use_ext => 1 } );
-  (my $fn, $self->{config}) = %{$cfg->[0]};
+  my $cfg;
+  try {
+    $cfg = Config::Any->load_files( { files => [ $args{config_file} || 'config.yaml' ], use_ext => 1 } );
+    (my $fn, $self->{config}) = %{$cfg->[0]};
+  } catch {
+    1;
+  };
   $self->{site_url} = $args{site_url} || $self->{config}->{site_url};
   $self->{dict_url} = $args{dict_url} || $self->{config}->{dict_url};
+  die 'No config file or configuration specified in args' unless $self->{site_url};
   unless ($self->{dict_url} =~ /^https?:/) {
     $self->{dict_url} = join('/', $self->{site_url},$self->{dict_url});
     $self->{dict_url} =~ s{([^:])//}{$1/}g;
@@ -80,7 +86,7 @@ sub create_dict_page {
   my ($mdselect) = grep { $_->{textContent} =~ /Markdown/ } $self->mech->selector('label.option');
   $self->mech->click( { dom => $mdselect->{firstChild}, synchronize => 0 } );
   $self->mech->click( { id => 'edit-submit' } );
-   return $self->mech->success;
+  return $self->mech->success;
 }
 
 sub update_page {
@@ -92,6 +98,7 @@ sub update_page {
   my $textarea = $self->mech->by_id('edit-body',one=>1);
   $textarea->{textContent} = $content;
   $self->mech->click( { id => 'edit-submit' } );
+  return $self->mech->success;
 }
 
 =head NAME

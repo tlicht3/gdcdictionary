@@ -16,7 +16,7 @@ SKIP : {
   ok !$upd->load_dict_page(term => 'Gefullte Fish'), 'couldn\'t find Gefullte Fish';
   ok $upd->load_dict_page(term => 'Aliquot'), 'got Aliquot';
 
-  ok $upd->create_dict_page(term => 'Frelb'), 'created Frelb'
+  ok $upd->create_dict_page(term => 'Frelb'), 'created Frelb';
   CLEANUP : {
     if ($upd->mech->uri =~ /frelb/) {
       $upd->mech->follow_link( url_regex => qr|node/[0-9]+/edit| );
