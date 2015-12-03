@@ -36,7 +36,7 @@ class Glossary:
             return
 
 class MakeDictMD:
-    def __init__(self,gloss=Glossary(),template="dict_template.md"):
+    def __init__(self,gloss=Glossary(),template="dict_template.md.jj"):
         self.jinja_env = Environment(trim_blocks=True,
                                      lstrip_blocks=True,
                                      extensions=['jinja2.ext.loopcontrols'])
