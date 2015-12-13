@@ -1,6 +1,7 @@
 type: term
 id: 30817a92-8564-42d9-86ba-7c8ec7e15690
 term: days_to_birth
+termns: 'clinical/diagnosis'
 termdef :
   term_id: 30817a92-8564-42d9-86ba-7c8ec7e15690
   term: >

@@ -19,6 +19,8 @@ class Glossary:
                 self.glossary[yml['term']] = yml
             except:
                 pass
+    def __iter__(self):
+        return self.glossary.__iter__()
     def get_term(self, term):
         try:
             return self.glossary[term]
@@ -34,6 +36,14 @@ class Glossary:
             return self.glossary[term]['termdef']['source']['cde']
         except KeyError:
             return
+
+class FilteredGlossary(Glossary):
+    def __init__(self, gloss, cb=lambda x:True):
+        self.glossary = {}
+        for (k,v) in gloss.glossary.items():
+            if cb(v):
+                self.glossary[k] = v
+        
 
 class MakeDictMD:
     def __init__(self,gloss=Glossary(),template="dict_template.md.jj"):

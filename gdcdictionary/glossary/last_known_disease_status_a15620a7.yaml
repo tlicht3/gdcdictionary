@@ -2,6 +2,7 @@
 id: a15620a7-3cce-4167-b40a-5af2f8378f63
 term: last_known_disease_status
 type: term
+termns: 'clinical/diagnosis'
 termdef:
   term: Person Neoplasm Status
   locale: en
