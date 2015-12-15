@@ -1,0 +1,24 @@
+{# Jinja template for GDC clinical elt table render in markdown #}
+{# input vars : gloss - glossary object filtered to clinical termns #}
+{% macro anchor_on(nm) -%}
+<a name="{{nm}}"></a>
+{%- endmacro %}
+{% macro titleize(nm) -%}
+ {% set S = nm.split("_") %}
+ {% for s in S %}
+{{s|capitalize}} {% endfor %}
+{%- endmacro %}
+
+| Term | Category | Definition | Accepted Values/Type | CDE(Collection) |
+| --- | --- | --- | --- | --- |
+{% for term in gloss|sort %}
+{% if gloss.get_term(term) %}
+   {% set Term = titleize(gloss.get_term(term).term) %}
+   {% set Cat = titleize(gloss.get_ns(term)[1]) %}
+   {% if gloss.get_cde_info(term).collection_url %}
+| {{Term}} | {{Cat}} | {{anchor_on(term)}}{{gloss.get_definition(term)|trim}} | {{gloss.descr_accepted_values(term)}} | [{{gloss.get_cde_info(term).cde_id}}]({{gloss.get_cde_info(term).collection_url}}) ({{gloss.get_cde_info(term).collection_name}})|
+   {% else %}
+| {{Term}} | {{Cat}} | {{anchor_on(term)}}{{gloss.get_definition(term)|trim}} | {{gloss.descr_accepted_values(term)}} | {{gloss.get_cde_info(term).cde_id}} ({{gloss.get_cde_info(term).collection_name}})|
+   {% endif %}
+{% endif %}
+{% endfor %}

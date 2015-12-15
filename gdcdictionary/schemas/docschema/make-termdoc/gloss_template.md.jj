@@ -15,9 +15,9 @@
 {% if gloss.get_term(term) %}
    {% set Term = titleize(gloss.get_term(term).term) %}
    {% if gloss.get_cde_info(term).collection_url %}
-| {{Term}} | {{anchor_on(term)}}{{gloss.get_definition(term)}} | {{gloss.get_cde_info(term).collection_name}} |[{{gloss.get_cde_info(term).cde_id}}]({{gloss.get_cde_info(term).collection_url}})|
+| {{Term}} | {{anchor_on(term)}}{{gloss.get_definition(term)|trim}} | {{gloss.get_cde_info(term).collection_name}} |[{{gloss.get_cde_info(term).cde_id}}]({{gloss.get_cde_info(term).collection_url}})|
    {% else %}
-| {{Term}} | {{anchor_on(term)}}{{gloss.get_definition(term)}} | {{gloss.get_cde_info(term).collection_name}} |{{gloss.get_cde_info(term).cde_id}}|
+| {{Term}} | {{anchor_on(term)}}{{gloss.get_definition(term)|trim}} | {{gloss.get_cde_info(term).collection_name}} |{{gloss.get_cde_info(term).cde_id}}|
    {% endif %}
 {% endif %}
 {% endfor %}

@@ -26,6 +26,11 @@ class Glossary:
             return self.glossary[term]
         except KeyError:
             return
+    def get_ns(self, term):
+        try:
+            return self.glossary[term]['termns'].split('/')
+        except KeyError:
+            return
     def get_definition(self, term):
         try:
             return self.glossary[term]['termdef']['definition']
@@ -36,7 +41,34 @@ class Glossary:
             return self.glossary[term]['termdef']['source']['cde']
         except KeyError:
             return
-
+    def descr_accepted_values(self,term):
+        tm=None
+        try:
+            tm=self.glossary[term]
+        except KeyError:
+            return
+        val = tm['termdef']['values']
+        if not val:
+            return ''
+        if val['type'] == 'string':
+            if val['description']:
+                return "_string_ ({descr})".format(descr=val['description'])
+            else:
+                return "_string_"
+        elif val['type'] == 'object':
+            try:
+                return "_number_ (units: {units})".format(units=val['properties']['units']['enum'][0])
+            except KeyError:
+                return "_number_"
+        elif val['type'] == 'array':
+            try:
+                en = val['items']['enum']
+                return "'" + "', '".join(en) + "'"
+            except:
+                return "what the hell?"
+        else:
+            raise Exception('Bad values schema for {term}'.format(term=tm))
+        
 class FilteredGlossary(Glossary):
     def __init__(self, gloss, cb=lambda x:True):
         self.glossary = {}
@@ -60,12 +92,14 @@ class MakeDictMD:
 if __name__=='__main__':
     mdmd = MakeDictMD()
     dict_files = argv[1:] if len(argv[1:]) else [ fn for fn in os.listdir(default_sdir) if fn.endswith("yaml") ]
+    if not os.path.exists('md'):
+        os.mkdir('md')
     for fn in dict_files:
         if fn.find("metaschema") >= 0 or fn.find("_definitions") >= 0:
             continue
         obj = yaml.load( open( os.path.join(default_sdir, fn) ).read() );
         try:
-            f= stdout if len(argv[1:]) else open(obj['id']+".md","w");
+            f= stdout if len(argv[1:]) else open("md/"+obj['id']+".md","w");
             term = [ prop for prop in obj['properties'] if mdmd.gloss.get_term(prop) ]
             print >> f, mdmd.render_entry(obj,has_terms=term)
         except Exception as e:
