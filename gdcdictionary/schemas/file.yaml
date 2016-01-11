@@ -129,8 +129,10 @@ links:
 
 required:
   - submitter_id
+  - file_format
   - file_name
   - file_size
+  - file_type
   - md5sum
   - state
 
@@ -151,12 +153,20 @@ properties:
       - string
       - "null"
     description: "TOREVIEW: the file id assigned by the submitter"
+  file_format:
+    type: string
+    description: "The format of the file"
   file_name:
     type: string
     description: "TOREVIEW: the file (object) name"
   file_size:
     type: number
     description: "the size file (object) in bytes"
+  file_type:
+    type: string
+    description: >
+      Description of file's role, e.g. mirna_quantification, 
+      somatic_snv, etc. 
   md5sum:
     type: string
     description: "The MD5 hash of this file"
