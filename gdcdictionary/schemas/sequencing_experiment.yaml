@@ -1,0 +1,32 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "sequencing_experiment"
+title: Sequencing Experiment
+type: object
+description: TBD
+program: '*'
+project: '*'
+
+namespace: http://gdc.nci.nih.gov
+validators: null
+category:
+additionalProperties: false
+
+systemProperties:
+  - id
+  - project_id
+  - created_datetime
+  - updated_datetime
+  - release_state
+  - release_state_datetime
+
+required:
+
+uniqueKeys:
+
+links:
+
+constraints:
+
+properties:
+

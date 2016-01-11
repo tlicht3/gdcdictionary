@@ -1,0 +1,29 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: analysis
+title: Analysis
+type: object
+description: TBD
+projects: '*'
+programs: '*'
+
+namespace: http://gdc.nci.nih.gov
+additionalProperties: false
+validators: null
+category:
+
+systemProperties:
+  - id
+  - project_id
+  - created_datetime
+  - updated_datetime
+  - release_state
+  - release_state_datetime
+
+links:
+
+required:
+
+uniqueKeys:
+
+properties:
