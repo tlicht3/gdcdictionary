@@ -9,7 +9,7 @@ project: '*'
 
 namespace: http://gdc.nci.nih.gov
 validators: null
-category:
+category: TBD #not sure how to classify
 additionalProperties: false
 
 systemProperties:
@@ -19,6 +19,7 @@ systemProperties:
   - updated_datetime
   - release_state
   - release_state_datetime
+#  - state?
 
 required:
   - type
@@ -41,9 +42,8 @@ links:
     backref: sequencing_experiments
     label: derived_from #not sure
     target_type: aliquot
-    multiplicity: many_to_one #not sure
+    multiplicity: one_to_one #not sure
     required: true
-    
 
 properties:
   id:
@@ -62,8 +62,7 @@ properties:
   sequencing_center:
     type: string
   sequencing_date:
-    description: "Date of sequencing in 'MM/DD/YYYY'."
-    type: string
+    $ref: "_definitions.yaml#/datetime"
   platform:
     description: "Sequencing platform."
     type: string

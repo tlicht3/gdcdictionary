@@ -27,10 +27,10 @@ links:
     required: true
     backref: read_groups
   - name: sequencing_experiments
-    label: #not sure
+    label: derived_from #not sure
     taget_type: sequencing_experiment
-    multiplicity: #not sure
-    required: #not sure
+    multiplicity: many_to_one
+    required: true #not sure
     backref: read_groups
 
 required:
@@ -200,6 +200,8 @@ properties:
     description: "Read Group Name"
     type: string
   aliquots:
+    $ref: "_definitions.yaml#/to_one"
+  sequencing_experiments:
     $ref: "_definitions.yaml#/to_one"
   created_datetime:
     $ref: "_definitions.yaml#/datetime"
