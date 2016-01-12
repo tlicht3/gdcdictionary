@@ -60,7 +60,7 @@ properties:
     description: "Submitter-defined name for experiment."
     type: string
   sequencing_center:
-  ## Link to db?
+    type: string
   sequencing_date:
     description: "Date of sequencing in 'MM/DD/YYYY'."
     type: string
