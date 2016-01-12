@@ -26,6 +26,12 @@ links:
     multiplicity: many_to_one
     required: true
     backref: read_groups
+  - name: sequencing_experiments
+    label: #not sure
+    taget_type: sequencing_experiment
+    multiplicity: #not sure
+    required: #not sure
+    backref: read_groups
 
 required:
   - type

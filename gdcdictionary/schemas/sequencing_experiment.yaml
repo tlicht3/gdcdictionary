@@ -21,12 +21,194 @@ systemProperties:
   - release_state_datetime
 
 required:
+  - type
+  - submitter_id
+  - aliquots
+  - experiment_name
+  - sequencing_center
+  - platform
+  - library_strategy
+  - read_group_id
+  - target_capture_kit_name
+  - target_capture_kit_target_region
 
 uniqueKeys:
+  - [ id ]
+  - [ project_id, submitter_id ]
 
 links:
-
-constraints:
+  - name: aliquots
+    backref: sequencing_experiments
+    label: derived_from #not sure
+    target_type: aliquot
+    multiplicity: many_to_one #not sure
+    required: true
+    
 
 properties:
-
+  id:
+    $ref: "_definitions.yaml#/UUID"
+  project_id:
+    type: string
+  submitter_id:
+    type:
+    - string
+    - "null"
+  type:
+    enum: [ "sequencing_experiment" ]
+  experiment_name:
+    description: "Submitter-defined name for experiment."
+    type: string
+  sequencing_center:
+  ## Link to db?
+  sequencing_date:
+    description: "Date of sequencing in 'MM/DD/YYYY'."
+    type: string
+  platform:
+    description: "Sequencing platform."
+    type: string
+    enum:
+      - Illumina
+      - SOLiD
+      - LS454
+      - Ion Torrent
+      - Complete Genomics
+      - PacBio
+      - Other
+  instrument_model:
+    description: "Instrument model."
+    enum:
+      - 454 GS FLX Titanium
+      - AB SOLiD 4
+      - AB SOLiD 2
+      - AB SOLiD 3
+      - Complete Genomics
+      - Illumina HiSeq X Ten
+      - Illumina HiSeq X Five
+      - Illumina Genome Analyzer II
+      - Illumina Genome Analyzer IIx
+      - Illumina HiSeq 2000
+      - Illumina HiSeq 2500
+      - Illumina MiSeq
+      - Illumina NextSeq
+      - Ion Torrent PGM
+      - Ion Torrent Proton
+      - PacBio RS
+      - Other
+  library_strategy:
+    description: "Library preparation strategy."
+    enum:
+      - WGS
+      - WXS
+      - RNA-Seq
+      - miRNA-Seq
+      - ChIP-Seq
+      - Bisulfite-Seq
+      - Validation
+      - Low-pass WGS
+      - Enhanced WXS
+      - Other Capture-Seq
+      - Other
+  read_group_id:
+    description: "Read group name."
+    type: string
+    pattern: "[A-Za-z0-9-_\.]+"
+  RIN:
+    description: "RNA integrity number."
+    type: number
+  flow_cell_barcode:
+    description: "Flow cell barcode."
+    type: string
+  includes_spike_ins:
+    type: boolean
+    description: "Spike-in included?"
+  spike_ins_fasta:
+    description: "Fasta file containing spike-in sequences." 
+    type: string
+  fastq_name: 
+    description: "Name of FASTQ."
+    type: string #read_group has this as an array
+  read_length:
+    description: "Read length."
+    type: number
+  is_paired_end:
+    description: "Are reads paired-end?"
+    type: boolean
+  library_name:
+    description: "Name of library."
+    type: string
+    pattern: "[A-Za-z0-9-\.]+"
+  library_selection:
+    description: "Library selection method."
+    type: string
+    enum: 
+      - Hybrid_Selection
+      - PCR
+      - Affinity_Enrichment
+      - Poly-T_Enrichment
+      - Inverse_rRNA
+      - Other
+  library_preparation_kit_name:
+    description: "Name of library preparation kit."
+    type: string
+  library_preparation_kit_vendor:
+    description: "Vendor of library preparation kit or 'custom'."
+    type: string
+  library_preparation_kit_catalog_number:
+    description: "Catalog of library preparation kit."
+    type: string
+  library_preparation_kit_version:
+    description: "Version of library preparation kit."
+    type: string
+  target_capture_kit_name:
+    description: "Name of target capture kit."
+    type: string
+  target_capture_kit_vendor:
+    description: "Vendor of target capture kit or 'custom'."
+    type: string
+  target_capture_kit_catalog_number:
+    description: "Catalog of target capture kit."
+    type: string
+  target_capture_kit_version:
+    description: "Version of target capture kit."
+    type: string
+  target_capture_kit_target_range:
+    description: "Name or URL of target capture kit BED file."
+    type: string
+  size_selection_range:
+    description: "Range of size selection."
+    type: string
+  adapter_name:
+    description: "Name of sequencing adapter."
+    type: string
+  adapter_sequence:
+    description: "Base sequence of sequencing adapter."
+    type: string
+  to_trim_adapter_sequence:
+    description: "Do you suggest adapter trimming be performed?"
+    default: false
+    type: boolean
+  library_strand:
+    default: Unstranded
+    enum:
+      - Unstranded
+      - First_stranded
+      - Second_stranded
+  base_caller_name:
+    description: "Name of base caller."
+    type: string
+  base_caller_version:
+    description: "Version of base caller."
+    type: string
+  aliquots:
+    $ref: "_definitions.yaml#/to_one"
+  created_datetime:
+    $ref: "_definitions.yaml#/datetime"
+  updated_datetime:
+    $ref: "_definitions.yaml#/datetime"
+  
+  # ======== Release state ========
+  release_state:
+    $ref: "_definitions.yaml#/release_state"
+  release_state_datetime:
+    $ref: "_definitions.yaml#/datetime"

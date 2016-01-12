@@ -23,7 +23,80 @@ systemProperties:
 links:
 
 required:
+  - type
+  - submitter_id
+  - ref_assembly_build
+  - aligner_name
+  - read_trimmed
 
 uniqueKeys:
+  - [ id ]
+  - [ project_id, submitter_id ]
 
 properties:
+  id:
+    $ref: "_definitions.yaml#/UUID"
+  project_id:
+    type:
+    - string
+    - "null"
+  type:
+    enum: [ "analysis" ]
+  analysis_center:
+    description: "Analysis center name."
+    type: string
+  analysis_date:
+    description: "Date analysis was completed as 'MM/DD/YYYY'."
+    type: string
+  analysis_pipeline_name:
+    description: "Name (and version) of analysis pipeline."
+    type: string
+  ref_assembly_build:
+    description: "Reference Build."
+    enum:
+      - hg18
+      - hg19
+      - GRCh36
+      - GRCh37
+      - GRCh38
+      - Other
+  ref_assembly_name:
+    description: "Short name of reference used."
+    type: string
+  ref_assembly_url:
+    description: "URL of reference fasta file."
+    type: string
+  aligner_name:
+    description: "Name of aligner used."
+    type: string
+  aligner_version:
+    description: "Version of aligner used."
+    type: string
+  alignment_command:
+    description: "Command used for alignment."
+    type: string
+  read_trimmed:
+    description: "Were the reads trimmed?"
+    type boolean
+  GDC_pipeline_compliant:
+    description: "Is analysis GDC compliant?"
+    type: boolean
+  program_name:
+    description: "Name of non-aligner programs used."
+    type: string
+  program_version:
+    description: "Version of non-aligner programs used."
+    type: string
+  program_command:
+    description: "Commands of non-aligner programs used."
+    type: string
+  created_datetime:
+    $ref: "_definitions.yaml#/datetime"
+  updated_datetime:
+    $ref: "_definitions.yaml#/datetime"
+
+  # ======== Release state ========
+  release_state:
+    $ref: "_definitions.yaml#/release_state"
+  release_state_datetime:
+    $ref: "_definitions.yaml#/datetime"
