@@ -93,16 +93,13 @@ state:
     - live
   oneOf:
     - enum:
-      - submitted
       - uploading
       - uploaded
       - md5summing
       - md5summed
       - validating
-      - validated
       - error
       - invalid
-      - released
       - suppressed
       - redacted
       - live
