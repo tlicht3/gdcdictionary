@@ -105,6 +105,8 @@ properties:
     $ref: "_definitions.yaml#/to_one"
   biospecimen_data_bundles:
     $ref: "_definitions.yaml#/to_one"
+  sra_data_bundles:
+    $ref: "_definitions.yaml#/to_one"
   project_id:
     type: string
   created_datetime:
