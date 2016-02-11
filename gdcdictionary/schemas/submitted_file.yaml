@@ -45,6 +45,12 @@ links:
     target_type: biospecimen_data_bundle
     multiplicity: many_to_one 
     required: false
+  - name: sra_data_bundles
+    backref: submitted_files
+    label: data_from
+    target_type: sra_data_bundle
+    multiplicity: many_to_one
+    required: false
 
 required:
   - submitter_id
