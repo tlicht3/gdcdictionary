@@ -103,7 +103,7 @@ days_to_birth:
         term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008233&version=1.0"
 
 
-days_to_last_followup:
+days_to_last_follow_up:
     type: number
     minimum: 0
     description: >
@@ -594,4 +594,3 @@ years_smoked:
         cde_id: 3137957
         cde_version: 1.0
         term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3137957&version=1.0"
-
