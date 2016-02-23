@@ -1,12 +1,15 @@
+from copy import deepcopy
+from collections import namedtuple
 from jsonschema import RefResolver
 
 import glob
 import logging
 import os
-import re
 import yaml
 
 MOD_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+
+ResolverPair = namedtuple('ResolverPair', ['resolver', 'source'])
 
 
 class GDCDictionary(object):
@@ -35,6 +38,7 @@ class GDCDictionary(object):
         self.definitions_paths = definitions_paths or self._definitions_paths
         self.exclude = [self.metaschema_path] + self.definitions_paths
         self.schema = dict()
+        self.resolvers = dict()
         if not lazy:
             self.load()
 
@@ -42,46 +46,45 @@ class GDCDictionary(object):
         """Load and reslove all schemas"""
 
         self.metaschema = self.load_yaml_schema(self.metaschema_path)
-        self.definitions = {}
-        self.resolvers = {
-            '{}'.format(path):
-            RefResolver('{}#'.format(path), self.load_yaml_schema(path))
-            for path in self.definitions_paths
-        }
+        self.resolvers = self.get_resolvers()
         self.load_root_dir()
+        self.schema = {
+            key: self.resolve_schema(schema, deepcopy(schema))
+            for key, schema in self.schema.iteritems()
+        }
 
-        map(self.resolve_all, self.schema.values())
+    def resolve_reference(self, value, root):
+        base, ref = value.split('#', 1)
 
-    def resolve_all(self, root, doc=None):
-        doc = doc or root
+        if base:
+            resolver, new_root = self.resolvers[base]
+            referrer, resolution = resolver.resolve(value)
+            self.resolve_schema(resolution, new_root)
+        else:
+            resolver = RefResolver('#', root)
+            referrer, resolution = resolver.resolve(value)
 
-        if isinstance(root, dict):
-            modified = False
-            for k, v in root.items():
-                print(k)
-                if k == '$ref':
+        return resolution
 
-                    print(k, v)
-                    base, ref = v.split('#')
-                    ref = ref.replace('/', '')
-                    print(base, ref)
+    def resolve_schema(self, obj, root):
+        if isinstance(obj, dict):
+            for key in obj.keys():
+                if key == '$ref':
+                    val = obj.pop(key)
+                    obj.update(self.resolve_reference(val, root))
+            return {k: self.resolve_schema(v, root) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self.resolve_schema(item, root) for item in obj]
+        else:
+            return obj
 
-                    if base == '':
-                        resolver = RefResolver('#', doc)
-                    else:
-                        resolver = self.resolvers[base]
-
-                    referrer, resolution = resolver.resolve(v)
-                    root.pop(k)
-                    root.update(resolution)
-                    modified = True
-
-            for k, v in root.items():
-                self.resolve_all(k, doc)
-
-        elif isinstance(root, list):
-            for item in root:
-                self.resolve_all(root, doc)
+    def get_resolvers(self):
+        resolvers = {}
+        for path in self.definitions_paths:
+            source = self.load_yaml_schema(path)
+            resolver = RefResolver('{}#'.format(path), source)
+            resolvers[path] = ResolverPair(resolver, source)
+        return resolvers
 
     def load_root_dir(self):
         cdir = os.getcwd()
