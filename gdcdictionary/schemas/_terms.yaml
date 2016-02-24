@@ -16,11 +16,10 @@ age_at_diagnosis:  # this is measured in years, do we need another term for age_
 
 
 alcohol_history:
-    type:
-        enum:
-            - "Don't Know/Not Sure"
-            - "No"
-            - "Yes"
+    enum:
+        - "Don't Know/Not Sure"
+        - "No"
+        - "Yes"
     description: >
         A response to a question that asks whether the participant has consumed at least
         12 drinks of any kind of alcoholic beverage in their lifetime.
@@ -33,14 +32,13 @@ alcohol_history:
 
 
 alcohol_intensity:
-    type:
-        enum:
-            - None
-            - Not Evaluated
-            - Daily Drinker
-            - Occasional Drinker
-            - Social Drinker
-            - Weekly Drinker
+    enum:
+        - None
+        - Not Evaluated
+        - Daily Drinker
+        - Occasional Drinker
+        - Social Drinker
+        - Weekly Drinker
     description: >
         Category to describe the patient's current level of alcohol use as self-reported by the patient.
     termDef:
@@ -74,12 +72,11 @@ cigarettes_per_day:
 
 
 classification_of_tumor:
-    type:
-        enum:
-            - Primary
-            - Metastasis
-            - Recurrence
-            - Other
+    enum:
+        - Primary
+        - Metastasis
+        - Recurrence
+        - Other
     description: "The point in clinical disease progression at which a tumor sample was taken."
     termDef:
         term: Classification of Tumor
@@ -156,12 +153,11 @@ days_to_treatment:
 
 
 ethnicity:
-    type:
-        enum:
-            - Hispanic or latino
-            - Not hispanic or latino
-            - Not reported
-            - Not allowed to collect
+    enum:
+        - Hispanic or latino
+        - Not hispanic or latino
+        - Not reported
+        - Not allowed to collect
     description: "The point in clinical disease progression at which a tumor sample was taken."
     termDef:
         term: Ethnicity
@@ -172,12 +168,11 @@ ethnicity:
 
 
 gender:
-    type:
-        enum:
-            - Female
-            - Male
-            - Unknown
-            - Unspecified
+    enum:
+        - Female
+        - Male
+        - Unknown
+        - Unspecified
     description: >
         Text designations that identify gender. Gender is described as the assemblage of properties that
         distinguish people on the basis of their societal roles.
@@ -219,14 +214,13 @@ morphology:
 
 
 last_known_disease_status:
-    type:
-        enum:
-            - Biochemical evidence of disease without structural correlate
-            - Distant met recurrence/progression
-            - Loco-regional recurrence/progression
-            - Tumor free
-            - Unknown tumor status
-            - With tumor
+    enum:
+        - Biochemical evidence of disease without structural correlate
+        - Distant met recurrence/progression
+        - Loco-regional recurrence/progression
+        - Tumor free
+        - Unknown tumor status
+        - With tumor
     description: "The state or condition of an individual's neoplasm at a particular point in time."
     termDef:
         term: Last Known_Disease_satus
@@ -253,11 +247,10 @@ primary_diagnosis:
 
 
 prior_malignancy:
-    type:
-        enum:
-            - Yes
-            - No
-            - Unknown
+    enum:
+        - Yes
+        - No
+        - Unknown
     description: >
         Text term to describe the patient's history of prior cancer diagnosis and the spatial location
         of any previous cancer occurrence. GDC: allow yes/no/unknown as accepted values.
@@ -270,12 +263,11 @@ prior_malignancy:
 
 
 progression_or_recurrence:
-    type:
-        enum:
-            - Yes
-            - No
-            - Unevaluable
-            - Unknown
+    enum:
+        - Yes
+        - No
+        - Unevaluable
+        - Unknown
     description: >
         Text indicator to represent the worsening or progression, recurrence of the cancer condition under
         investigation since the time of last contact with the subject.
@@ -288,16 +280,15 @@ progression_or_recurrence:
 
 
 race:
-    type:
-        enum:
-            - White
-            - American Indian or Alaska Native
-            - Black or African American
-            - Asian
-            - Native Hawaiian or other Pacific Islander
-            - Other
-            - Not reported
-            - Not allowed to collect
+    enum:
+        - White
+        - American Indian or Alaska Native
+        - Black or African American
+        - Asian
+        - Native Hawaiian or other Pacific Islander
+        - Other
+        - Not reported
+        - Not allowed to collect
     description: >
         An arbitrary classification of a taxonomic group that is a division of a species. It usually arises
         as a consequence of geographical isolation within a species and is characterized by shared heredity,
@@ -312,19 +303,18 @@ race:
 
 
 relationship_type:
-    type:
-        enum:
-            - Parent
-            - Mother
-            - Father
-            - Child
-            - Son
-            - Daughter
-            - Sibling
-            - Brother
-            - Sister
-            - None
-            - Don't Know
+    enum:
+        - Parent
+        - Mother
+        - Father
+        - Child
+        - Son
+        - Daughter
+        - Sibling
+        - Brother
+        - Sister
+        - None
+        - Don't Know
     description: >
         The subgroup that describes the state of connectedness between members of the unit of society
         organized around kinship ties.
@@ -337,11 +327,10 @@ relationship_type:
 
 
 relative_with_cancer_history:
-    type:
-        enum:
-            - Yes
-            - No
-            - Unknown
+    enum:
+        - Yes
+        - No
+        - Unknown
     description: >
         Indicator to signify whether or not an individual's biological relative has been diagnosed with another
         type of cancer. (GDC definition: Indicator to signify whether or not an individual's biological relative
@@ -355,15 +344,14 @@ relative_with_cancer_history:
 
 
 religion:  # this term is currently not used in any schema
-    type:
-        enum:
-            - Roman Catholic
-            - Protestant Christian
-            - Judaism
-            - Muslim
-            - None
-            - Not Allowed To Collect
-            - Other
+    enum:
+        - Roman Catholic
+        - Protestant Christian
+        - Judaism
+        - Muslim
+        - None
+        - Not Allowed To Collect
+        - Other
     description: >
         The category of a person's institutionalized system grounded in belief and reverence for a
         supernatural power or powers regarded as creator and governor of the universe.
@@ -390,13 +378,12 @@ site_of_resection_or_biopsy:
 
 
 smoking_history:
-    type:
-        enum:
-            - "Lifelong Non-Smoker"
-            - "Current Smoker"
-            - "Current Reformed Smoker for > 15 yrs"
-            - "Current Refomed Smoker for < or = 15 yrs"
-            - "Current Reformed Smoker Duration Not Specified"
+    enum:
+        - "Lifelong Non-Smoker"
+        - "Current Smoker"
+        - "Current Reformed Smoker for > 15 yrs"
+        - "Current Refomed Smoker for < or = 15 yrs"
+        - "Current Reformed Smoker Duration Not Specified"
     description: >
         Category describing current smoking status and smoking history as self-reported by a patient.
     termDef:
@@ -456,19 +443,18 @@ tissue_or_organ_of_origin:
 
 
 treatment_intent_type:
-    type:
-        enum:
-            - Adjuvant
-            - Cancer control
-            - Cure
-            - Initial
-            - Other
-            - Palliative
-            - Prevention
-            - Primary
-            - Progression
-            - Progression after initial
-            - Recurrence
+    enum:
+        - Adjuvant
+        - Cancer control
+        - Cure
+        - Initial
+        - Other
+        - Palliative
+        - Prevention
+        - Primary
+        - Progression
+        - Progression after initial
+        - Recurrence
     description: "Text term to identify the reason for the administration of a treatment regimen."
     termDef:
         term: Treatment Regimen Intent Type
@@ -479,12 +465,11 @@ treatment_intent_type:
 
 
 treatment_or_therapy:
-    type:
-        enum:
-            - Yes
-            - No
-            - Not Applicable
-            - Unknown
+    enum:
+        - Yes
+        - No
+        - Not Applicable
+        - Unknown
     description: >
         A yes/no/unknown/not applicable indicator related to the administration of therapeutic agents
         received before the body specimen was collected.
@@ -532,12 +517,11 @@ tumor_stage:
 
 
 vital_status:
-    type:
-        enum:
-            - Alive
-            - Dead
-            - Lost to follow-up
-            - Unknown
+    enum:
+        - Alive
+        - Dead
+        - Lost to follow-up
+        - Unknown
     description: >
         The state or condition of being living or deceased; also includes the case where the vital
         status is unknown.
