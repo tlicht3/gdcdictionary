@@ -170,6 +170,80 @@ properties:
     description: >
       TOREVIEW: optional comment about why the file is in the
       current state, mainly for invalid state.
+  tag:
+    description: >
+      Name of tag associated with this file.
+    enum:
+      - original # for legacy data
+      - PilotAnalysisPipeline2 # for legacy data
+      - OptionAnalysisPipeline2 # for legacy data 
+      - meth
+      - hg18
+      - hg19
+      - germline
+      - snv
+      - exon
+      - image
+      - miRNA
+      - ismpolish
+      - byallele
+      - raw
+      - tangent
+      - isoform
+      - coverage
+      - junction
+      - cnv
+      - msi
+      - cgh
+      - qc
+      - sif
+      - auxiliary
+      - QA
+      - lowess_normalized_smoothed
+      - BioSizing
+      - segmentation
+      - omf
+      - sv
+      - control
+      - tr
+      - alleleSpecificCN
+      - pairedcn
+      - segmented
+      - somatic
+      - DGE
+      - Tag
+      - bisulfite
+      - indel
+      - portion
+      - sample
+      - cqcf
+      - follow_up
+      - aliquot
+      - analyte
+      - protocol
+      - diagnostic_slides
+      - slide
+      - FIRMA
+      - gene
+      - patient
+      - nte
+      - radiation
+      - drug
+      - B_Allele_Freq
+      - Delta_B_Allele_Freq
+      - Genotypes
+      - LOH
+      - Normal_LogR
+      - Paired_LogR
+      - seg
+      - segnormal
+      - Unpaired_LogR
+      - MSI
+      - hpv
+      - cov
+      - batch_effect_removed
+      - harmonized
+      - summary
 
   aliquots:
     $ref: "_definitions.yaml#/to_many"
