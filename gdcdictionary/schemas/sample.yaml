@@ -63,7 +63,6 @@ properties:
   sample_type:
     term:
       $ref: "_terms.yaml#/sample_type"
-    type: string
     enum:
       - Additional Metastatic
       - Additional - New Primary
@@ -104,7 +103,6 @@ properties:
   sample_type_id:
     term:
       $ref: "_terms.yaml#/sample_type_id"
-    type: string
     enum:
       - '01'
       - '02'
@@ -133,7 +131,6 @@ properties:
   tumor_code_id:
     term:
       $ref: "_terms.yaml#/tumor_code_id"
-    type: string
     enum:
       - "00"
       - "01"
@@ -162,7 +159,6 @@ properties:
   tumor_code:
     term:
       $ref: "_terms.yaml#/tumor_code"
-    type: string
     enum:
       - Non cancerous tissue
       - Diffuse Large B-Cell Lymphoma (DLBCL)
