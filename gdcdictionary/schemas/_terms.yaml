@@ -1,5 +1,15 @@
 id: _terms
 
+28s_16s_ribosomal_rna_ratio:
+  description: >
+    The 28S/18S ribosomal RNA band ratio used to assess the quality of total RNA.
+  termDef:
+    term: "28s/18s Ribosomal RNA Ratio"
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 a260_a280_ratio: # TOREVIEW
   description: >
     Purity measurement that weighs the absorbance at 260nm (DNA concentration)
@@ -44,9 +54,42 @@ alcohol_intensity:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3457767&version=1.0"
 
+aliquot_quantity:
+  description: >
+    The quantity in micrograms (ug) of the aliquot(s) derived from the analyte(s) shipped for
+    sequencing and characterization.
+  termDef:
+    term: Biospecimen Aliquot Quantity
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+aliquot_volume:
+  description: >
+    The volume in microliters (ml) of the aliquot(s) derived from the analyte(s) shipped for
+    sequencing and characterization.
+  termDef:
+    term: Biospecimen Aliquot Volume
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 amount: # TOREVIEW
   description: > 
     Weight in grams or volume in mL.
+
+analyte_quantity:
+  description: >
+    The quantity in micrograms (ug) of the analyte(s) derived from the analyte(s) shipped for
+    sequencing and characterization.
+  termDef:
+    term: Biospecimen Analyte Quantity
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 analyte_type: # TOREVIEW
   description: >
@@ -56,6 +99,50 @@ analyte_type_id: # TOREVIEW
   description: >
     Single letter BCR code for the analyte type.
 
+analyte_volume:
+  description: >
+    The volume in microliters (ml) of the analyte(s) derived from the analyte(s) shipped for
+    sequencing and characterization.
+  termDef:
+    term: Biospecimen Analyte Volume
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+ann_arbor_b_symptoms:
+  description: >
+    Text term to signify whether lymphoma B-symptoms are present as noted in the patient's medical 
+    record.
+  termDef:
+    term: Lymphoma B-Symptoms Medical Record Documented Indicator
+    source: caDSR
+    cde_id: 2902402
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2902402&version=1.0"
+
+ann_arbor_extranodal_involvement:
+  description: >
+    Indicator that identifies whether a patient with malignant lymphoma has lymphomatous involvement
+    of an extranodal site. 
+  termDef:
+    term: Lymphomatous Extranodal Site Involvement Indicator
+    source: caDSR
+    cde_id: 3364582
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3364582&version=1.0"
+
+ann_arbor_tumor_stage:
+  description: >
+    The classification of the anatomic disease extent of lymphoma (Hodgkin's and Non-Hodgkins) based
+    on the Ann Arbor Staging System.
+  termDef:
+    term: Ann Arbor Tumor Stage
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 base_caller_name: # TOREVIEW
   description: >
     Name of the base caller.
@@ -63,6 +150,16 @@ base_caller_name: # TOREVIEW
 base_caller_version: # TOREVIEW
   description: >
     Version of the base caller.
+
+biospecimen_anatomic_site:
+  description: >
+    Text term that represents the name of the primary disease site of the submitted tumor sample.
+  termDef:
+    term: Submitted Tumor Sample Primary Anatomic Site
+    source: caDSR
+    cde_id: 4742851
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4742851&version=1.0"
 
 bmi:
   description: "The body mass divided by the square of the body height expressed in units of kg/m^2."
@@ -72,6 +169,17 @@ bmi:
     cde_id: 4973892
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4973892&version=1.0"
+
+burkitt_lymphoma_clinical_variant:
+  description: >
+    Burkitt's lymphoma categorization based on clinical features that differ from other forms of the
+    same disease.
+  termDef:
+    term: Burkitt Lymphoma Clinical Variant Type
+    source: caDSR
+    cde_id: 3770421
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3770421&version=1.0"
 
 cigarettes_per_day:
   description: "The average number of cigarettes smoked per day."
@@ -202,6 +310,40 @@ days_to_treatment:
     cde_version: null
     term_url: null
 
+days_to_treatment_end:
+  description: >
+    Time interval from the date of the initial pathologic diagnosis to the date of treatment end,
+    represented as a calculated number of days.
+  termDef:
+    term: Treatment End Subtract First Pathologic Diagnosis Day Calculation Value
+    souce: caDSR
+    cde_id: 5102431
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102431&version=1.0"
+
+days_to_treatment_start:
+  description: >
+    Time interval from the date of the initial pathologic diagnosis to the start of treatment,
+    represented as a calculated number of days. 
+  termDef:
+    term: Treatment Start Subtract First Pathologic Diagnosis Time Day Calculation Value
+    souce: caDSR
+    cde_id: 5102411
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102411&version=1.0"
+
+diagnosis_pathologically_confirmed:
+  description: >
+    The histologic description of tissue or cells confirmed by a pathology review of frozen or
+    formalin fixed slide(s) completed after the diagnostic pathology review of the tumor sample used
+    to extract analyte(s).
+  termDef:
+    term: Post-Diagnostic Pathology Review Confirmation
+    souce: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 encoding: # TOREVIEW
   description: >
     Version of ASCII encoding of quality values found in the file. 
@@ -304,6 +446,28 @@ last_known_disease_status:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2759550&version=1.0"
 
+ldh_level_at_diagnosis:
+  description: >
+    The 2 decimal place numeric laboratory value measured, assigned or computed related to the
+    assessment of lactate dehydrogenase in a specimen. 
+  termDef:
+    term: Laboratory Procedure Lactate Dehydrogenase Result Integer::2 Decimal Place Value
+    source: caDSR
+    cde_id: 2798766
+    cde_version: 1.0 
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2798766&version=1.0"
+
+ldh_normal_range_upper:
+  description: >
+    The upper value of the normal range for Lactate dehydrogenase (LDH) at the facility where the
+    patient was tested at the time of initial diagnosis.
+  termDef:
+    term: LDH Upper Limit for Normal at Facility
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 library_strategy: # TOREVIEW
   description: >
     Library strategy.
@@ -340,6 +504,26 @@ longest_dimension: # TOREVIEW
   description: >
     Longest dimension of the sample, in millimeters.
 
+method_of_diagnosis:
+  description: >
+    The method used to initially the patient's diagnosis.
+  termDef:
+    term: Method of Diagnosis
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+method_of_sample_procurement:
+  description: >
+    The method used to procure the sample used to extract analyte(s).
+  termDef:
+    term: Method of Sample Procurement
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 md5sum: # TOREVIEW
   description: >
     The 128-bit hash value expressed as a 32 digit hexadecimal number used as a file's
@@ -361,6 +545,17 @@ morphology:
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3226275&version=1.0"
 
+normal_tumor_genotype_snp_match:
+  description: >
+    Text term that represents whether or not the genotype of the normal tumor matches or if the data
+    is not available.
+  termDef:
+    term: Normal Tumor Genotype Match Indicator
+    source: caDSR
+    cde_id: 4588156
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4588156&version=1.0"
+ 
 number_proliferating_cells: # TOREVIEW
   description: >
     Number of proliferating cells identified in the slide sample.
@@ -445,6 +640,17 @@ prior_malignancy:
     cde_id: 3382736
     cde_version: 2.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3382736&version=2.0"
+
+prior_treatment:
+  description: >
+    A yes/no/unknown/not applicable indicator related to the administration of therapeutic agents
+    received before the body specimen was collected. 
+  termDef:
+    term: Therapeutic Procedure Prior Specimen Collection Administered Yes No Unknown Not Applicable Indicator
+    souce: caDSR
+    cde_id: 4231463
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4231463&version=1.0" 
 
 progression_or_recurrence:
   description: >
@@ -666,6 +872,16 @@ total_sequences: # TOREVIEW
     we have found that problematic sequences are not evenly distributed through a file we have disabled
     this for now. 
 
+treatment_anatomic_site:
+  description: >
+    The anatomic site or field targeted by a treatment regimen or single agent therapy.
+  termDef:
+    term: Treatment Anatomic Site
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 treatment_intent_type:
   description: >
     Text term to identify the reason for the administration of a treatment regimen. [Manually-curated]
@@ -675,6 +891,17 @@ treatment_intent_type:
     cde_id: 2793511
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2793511&version=1.0"
+
+treatment_measure_of_success:
+  description: >
+    Text term that represents the kind of outcome achieved after the completion of the initial
+    course of treatment. 
+  termDef:
+    term: Primary Therapy Outcome Success Type
+    source: caDSR
+    cde_id: 2786727
+    cde_version: 4.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2786727&version=4.0"
 
 treatment_or_therapy:
   description: >
@@ -686,6 +913,16 @@ treatment_or_therapy:
     cde_id: 4231463
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=4231463&version=1.0" 
+
+treatment_type:
+  description: >
+    Text term that describes the kind of treatment administered.
+  termDef:
+    term: Treatment Method Type
+    source: caDSR
+    cde_id: 5102381
+    cde_version: 1.0
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=5102381&version=1.0"
 
 tumor_grade:
   description: >
@@ -767,6 +1004,15 @@ year_of_birth:
     cde_id: 2896954
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2896954&version=1.0"
+
+year_of_diagnosis:
+   description: "Numeric value to represent the year of an individual's initial pathologic diagnosis of cancer."
+   termDef:
+     term: Year of initial pathologic diagnosis
+     source: NCIP
+     cde_id: 2896960
+     cde_version: 1.0
+     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=2896960&version=1.0"
 
 year_of_death:
   description: "Numeric value to represent the year of the death of an individual."

@@ -80,6 +80,55 @@ properties:
     maximum: 32872
     minimum: 0
 
+  ann_arbor_b_symptoms:
+    term:
+      $ref: "_terms.yaml#/ann_arbor_b_symptoms"
+    enum:
+      - "yes"
+      - "no"
+      - unknown
+
+  ann_arbor_extranodal_involvement:
+    term:
+      $ref: "_terms.yaml#/ann_arbor_extranodal_involvement"
+    enum:
+      - "yes"
+      - "no"
+      - unknown
+
+  ann_arbor_tumor_stage:
+    term:
+      $ref: "_terms.yaml#/ann_arbor_tumor_stage"
+    enum:
+      - Pathologic Stage I
+      - Pathologic Stage II
+      - Pathologic Stage III
+      - Pathologic Stage IV
+      - Clinical Stage I
+      - Clinical Stage II
+      - Clinical Stage III
+      - Clinical Stage IV
+
+  burkitt_lymphoma_clinical_variant:
+    term:
+      $ref: "_terms.yaml#/burkitt_lymphoma_clinical_variant"
+    enum:
+      - "Endemic"
+      - "Immunodeficiency-associated, adult"
+      - "Immunodeficiency-associated, pediatric"
+      - "Sporadic, adult"
+      - "Sporadic, pediatric"
+
+  classification_of_tumor:
+    term:
+      $ref: "_terms.yaml#/classification_of_tumor"
+    enum:
+      - primary
+      - metastasis
+      - recurrence
+      - other
+      - not reported
+
   days_to_birth:
     term:
       $ref: "_terms.yaml#/days_to_birth"
@@ -103,74 +152,12 @@ properties:
       - number
       - "null"
 
-  vital_status:
+  days_to_last_known_disease_status:
     term:
-      $ref: "_terms.yaml#/vital_status"
-    enum:
-      - alive
-      - dead
-      - lost to follow-up
-      - unknown
-      - pending # this is from TARGET RT clinical data
-      - not reported
-
-  primary_diagnosis:
-    term:
-      $ref: "_terms.yaml#/primary_diagnosis"
-    type: string
-
-  morphology:
-    term:
-      $ref: "_terms.yaml#/morphology"
-    type: string
-
-  tissue_or_organ_of_origin:
-    term:
-      $ref: "_terms.yaml#/tissue_or_organ_of_origin"
-    type: string
-
-  site_of_resection_or_biopsy:
-    term:
-      $ref: "_terms.yaml#/site_of_resection_or_biopsy"
-    type: string
-
-  classification_of_tumor:
-    term:
-      $ref: "_terms.yaml#/classification_of_tumor"
-    enum:
-      - primary
-      - metastasis
-      - recurrence
-      - other
-      - not reported
-
-  prior_malignancy:
-    term:
-      $ref: "_terms.yaml#/prior_malignancy"
-    enum:
-      - "yes"
-      - "no"
-      - unknown
-      - not reported
-
-  tumor_stage:
-    term:
-      $ref: "_terms.yaml#/tumor_stage"
-    type: string
-
-  tumor_grade:
-    term:
-      $ref: "_terms.yaml#/tumor_grade"
-    type: string
-
-  progression_or_recurrence:
-    term:
-      $ref: "_terms.yaml#/progression_or_recurrence"
-    enum:
-      - "yes"
-      - "no"
-      - unknown
-      - not reported
+      $ref: "_terms.yaml#/days_to_last_known_disease_status"
+    type:
+      - number
+      - "null"
 
   days_to_recurrence:
     term:
@@ -191,9 +178,107 @@ properties:
       - With tumor
       - not reported
 
-  days_to_last_known_disease_status:
+  ldh_level_at_diagnosis:
     term:
-      $ref: "_terms.yaml#/days_to_last_known_disease_status"
+      $ref: "_terms.yaml#/ldh_level_at_diagnosis"
+    type: number
+
+  ldh_normal_range_upper:
+    term:
+      $ref: "_terms.yaml#/ldh_normal_range_upper"
+    type: number
+
+  method_of_diagnosis:
+    term:
+      $ref: "_terms.yaml#/method_of_diagnosis"
+    enum:
+      - Autopsy
+      - Biopsy
+      - Blood Draw
+      - Bone Marrow Aspirate
+      - Core Biopsy
+      - Cytology
+      - Debulking
+      - Diagnostic Imaging
+      - Excisional Biopsy
+      - Fine Needle Aspiration
+      - Incisional Biopsy
+      - Laparoscopy
+      - Laparotomy
+      - Other
+      - Surgical Resection
+      - Ultrasound Guided Biopsy
+
+  morphology:
+    term:
+      $ref: "_terms.yaml#/morphology"
+    type: string
+
+  primary_diagnosis:
+    term:
+      $ref: "_terms.yaml#/primary_diagnosis"
+    type: string
+
+  prior_malignancy:
+    term:
+      $ref: "_terms.yaml#/prior_malignancy"
+    enum:
+      - "yes"
+      - "no"
+      - unknown
+      - not reported
+
+  prior_treatment:
+    term:
+      $ref: "_terms.yaml#/prior_treatment"
+    enum:
+      - "yes"
+      - "no"
+      - unknown
+
+  progression_or_recurrence:
+    term:
+      $ref: "_terms.yaml#/progression_or_recurrence"
+    enum:
+      - "yes"
+      - "no"
+      - unknown
+      - not reported
+
+  site_of_resection_or_biopsy:
+    term:
+      $ref: "_terms.yaml#/site_of_resection_or_biopsy"
+    type: string
+
+  tissue_or_organ_of_origin:
+    term:
+      $ref: "_terms.yaml#/tissue_or_organ_of_origin"
+    type: string
+
+  tumor_grade:
+    term:
+      $ref: "_terms.yaml#/tumor_grade"
+    type: string
+
+  tumor_stage:
+    term:
+      $ref: "_terms.yaml#/tumor_stage"
+    type: string
+
+  vital_status:
+    term:
+      $ref: "_terms.yaml#/vital_status"
+    enum:
+      - alive
+      - dead
+      - lost to follow-up
+      - unknown
+      - pending # this is from TARGET RT clinical data
+      - not reported
+
+  year_of_diagnosis:
+    term:
+      $ref: "_terms.yaml#/year_of_diagnosis"
     type:
       - number
       - "null"
