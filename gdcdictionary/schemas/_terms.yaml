@@ -31,14 +31,13 @@ adapter_sequence: # TOREVIEW
 
 age_at_diagnosis:
   description: >
-   Time interval from a person's date of birth to the date of initial pathologic diagnosis,
-   represented as a calculated number of days.
+    Age at the time of diagnosis expressed in number of days since birth.
   termDef:
-    term: Person Birth Date Less Initial Pathologic Diagnosis Date Calculated Day Value
+    term: Patient Diagnosis Age Day Value
     source: caDSR
-    cde_id: 3008233
+    cde_id: 3225640
     cde_version: 1.0
-    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3008233&version=1.0"
+    term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3225640&version=1.0"
 
 alcohol_history:
   description: >
