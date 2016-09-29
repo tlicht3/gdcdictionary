@@ -1,0 +1,163 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "clinical_test"
+title: Clinical Test 
+type: object
+namespace: http://gdc.nci.nih.gov
+category: clinical 
+project: '*'
+program: '*'
+description: > 
+  Metadata concerning any clinical tests used in relation to a case diagnosis. 
+additionalProperties: false
+submittable: false
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - created_datetime
+  - updated_datetime
+  - state
+
+links:
+  - name: cases 
+    backref: clinical_tests
+    label: performed_for 
+    target_type: case
+    multiplicity: many_to_one
+    required: true
+  - name: diagnoses
+    backref: clinical_tests
+    label: relates_to
+    target_type: diagnosis
+    multiplicity: many_to_many
+    required: false
+
+required:
+  - biomarker_name
+  - biomarker_result
+  - biomarker_test_method
+  - cases
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+  type:
+    enum: [ "clinical_test" ]
+
+  id:
+    $ref: "_definitions.yaml#/UUID"
+    systemAlias: node_id
+
+  state:
+    $ref: "_definitions.yaml#/state"
+
+  submitter_id:
+    type:
+      - string
+      - "null"
+
+  biomarker_name:
+    term:
+      $ref: "_terms.yaml#/biomarker_name"
+    enum:
+      - ACOX2
+      - AKT1
+      - Alternative prenylation
+      - Aneuploidy
+      - Antigen 43-9F
+      - Apoptotic index
+      - Basement Membrane Disposition
+      - Blood Group Antigen
+      - Cytokeratin
+      - EGFR
+      - ERBB2
+      - ERBB3
+      - ERBB4
+      - FHIT
+      - FTAse
+      - Growth factors
+      - Ki-ras Mutation
+      - Ki-ras Other
+      - MAPK1
+      - MAPK3
+      - MCM2
+      - MKI67
+      - Mbib-1
+      - Micronuclei
+      - Microvessel denisty
+      - Neuron-specific enolase
+      - PCNA
+      - PK13
+      - PPARD
+      - PPARG
+      - PTGIS
+      - PTGS2
+      - RARB
+      - Raf-1
+      - Serum CA125
+      - Serum lactate dehydrongenase
+      - Soluble Interleukin-2 Receptor
+      - Squamous Cell Carcinoma Antigen
+      - TGF-B
+      - TK
+      - TP53
+      - myc Family
+      - not reported
+      - not allowed to collect
+      - pending
+
+  biomarker_result:
+    term:
+      $ref: "_terms.yaml#/biomarker_result"
+    enum:
+      - Amplification
+      - Gain
+      - Loss
+      - Normal
+      - Other
+      - Translocation
+      - not reported
+      - not allowed to collect
+      - pending
+
+  biomarker_test_method:
+    term:
+      $ref: "_terms.yaml#/biomarker_test_method"
+    enum:
+      - Cytogenetics
+      - FISH
+      - IHC
+      - Karyotype
+      - NGS
+      - Nuclear Staining
+      - Other
+      - RT-PCR
+      - Southern
+      - not reported
+      - not allowed to collect
+      - pending
+
+  ldh_level_at_diagnosis:
+    term:
+      $ref: "_terms.yaml#/ldh_level_at_diagnosis"
+    type: number
+
+  ldh_normal_range_upper:
+    term:
+      $ref: "_terms.yaml#/ldh_normal_range_upper"
+    type: number
+
+  cases:
+    $ref: "_definitions.yaml#/to_one"
+  diagnoses:
+    $ref: "_definitions.yaml#/to_many"
+  project_id:
+    $ref: "_definitions.yaml#/project_id" 
+  created_datetime:
+    $ref: "_definitions.yaml#/datetime"
+  updated_datetime:
+    $ref: "_definitions.yaml#/datetime"

@@ -1,0 +1,15 @@
+{
+    "type": "clinical_test",
+    "submitter_id": "clinical_test_date_individual_name",
+    "biomarker_name": "ERBB4",
+    "biomarker_result": "Normal",
+    "biomarker_test_method": "Cytogenetics",
+    "ldh_level_at_diagnosis": 3432,
+    "ldh_normal_range_upper": 13241,
+    "cases": {
+        "submitter_id": "Extra large case"
+    },
+    "diagnoses": {
+        "submitter_id": "BL Diagnosis"
+    }
+}
